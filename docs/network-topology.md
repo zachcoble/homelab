@@ -9,7 +9,7 @@ Two trust domains:
 1. **Trusted LAN** — local east-west traffic and core service reachability.
 2. **Tailscale overlay** — the only path for remote administration.
 
-A third zone, the **isolated VLAN**, sits behind a dedicated OPNsense VM and never has a direct path to the trusted LAN or the admin overlay. Nothing in this environment is reachable via router port forwarding.
+Remote access is documented through Tailscale; no router port forwarding is described here.
 
 ## Remote access paths
 
@@ -31,9 +31,6 @@ Authorized device → Tailscale overlay → reverse-proxied HTTPS endpoint → l
 
 ### Caddy / internal services
 Caddy terminates TLS using wildcard certificates issued via Cloudflare's DNS-01 challenge, then reverse-proxies to the internal services (Nextcloud, Jellyfin). DNS-01 means no challenge endpoint ever needs to be reachable from the public Internet — the whole certificate issuance flow happens through the DNS provider's API.
-
-### Isolated VLAN
-Routed and firewalled by a dedicated OPNsense VM. Devices on this VLAN can reach the Internet but have no route to the trusted LAN, the Proxmox management interface, or any Tailscale-only service.
 
 ## Addressing notes
 
