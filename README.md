@@ -54,6 +54,8 @@ flowchart TB
 
 ## Tech stack
 
+Jellyfin is accessed through the private Tailscale tailnet, as reported by the owner. The exact access route is not yet documented; the diagram does not imply that Tailscale is installed directly on the Jellyfin host.
+
 | Layer | What | Why |
 |---|---|---|
 | Hypervisor | Proxmox VE | Free, KVM-based, good enough clustering/snapshot story for a single-host lab |

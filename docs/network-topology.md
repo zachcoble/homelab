@@ -29,6 +29,10 @@ Firewall policy on the relay host:
 ### n8n
 Authorized device → Tailscale overlay → reverse-proxied HTTPS endpoint → local app listener on loopback only.
 
+### Jellyfin
+
+The owner reports accessing Jellyfin through the private Tailscale tailnet. The exact route remains to be documented: this may use direct device enrollment, a subnet route, or a proxy. No specific route or live connectivity check is claimed here.
+
 ### Caddy / internal services
 Caddy terminates TLS using wildcard certificates issued via Cloudflare's DNS-01 challenge, then reverse-proxies to the internal services (Nextcloud, Jellyfin). DNS-01 means no challenge endpoint ever needs to be reachable from the public Internet — the whole certificate issuance flow happens through the DNS provider's API.
 
